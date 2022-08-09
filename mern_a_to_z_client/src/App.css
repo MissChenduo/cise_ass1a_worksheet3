@@ -77,6 +77,13 @@
   overflow: hidden;
 }
 
+.card-container img{
+  width: 100%;
+  height: 200px;  /* height of the image */
+  object-fit: cover;
+}
+
+
 .desc {
   height: 130px;
   padding: 10px;
