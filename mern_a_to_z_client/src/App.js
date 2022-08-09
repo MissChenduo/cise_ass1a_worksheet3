@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import {  BrowserRouter, Routes,Route } from 'react-router-dom';
+import './App.css';
+
+import ShowBookList from './components/ShowBookList';
+import CreateBook from './components/CreateBook';
+import ShowBookDetails from './components/ShowBookDetails';
+import UpdateBookInfo from './components/UpdateBookInfo';
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={ <ShowBookList />} />
+          <Route path='/create-book' element={<CreateBook />} />
+          <Route path='/edit-book/:id' element={<UpdateBookInfo />} />
+          <Route path='/show-book/:id' element={<ShowBookDetails />} />
+      </Routes>          
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
