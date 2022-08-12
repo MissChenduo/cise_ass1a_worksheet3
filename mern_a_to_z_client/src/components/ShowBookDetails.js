@@ -11,7 +11,7 @@ export default function ShowBookDetails() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios('http://localhost:8082/api/books/'+ params.id);
+        const response = await axios('/api/books/'+ params.id);
         setData(response.data);
       } catch (error) {
         console.error(error.message);
@@ -63,15 +63,15 @@ export default function ShowBookDetails() {
 
   function deleteClick(e) {
     e.preventDefault();
-    alert('deleteClick');
-    // axios
-    //   .delete('http://localhost:8082/api/books/'+params.id)
-    //   .then(res => {
-    //     navigate("/");
-    //   })
-    //   .catch(err => {
-    //     console.log("Error form ShowBookDetails_deleteClick");
-    //   })
+    console.info("delete book " + params.id) ;
+    axios
+      .delete('/api/books/'+params.id)
+      .then(res => {
+        navigate("/");
+      })
+      .catch(err => {
+        console.log("Error form ShowBookDetails_deleteClick");
+      })
   }
 
   return (
@@ -105,7 +105,7 @@ export default function ShowBookDetails() {
             </div>
 
             <div className="col-md-6">
-              <Link to={`/edit-book/`} className="btn btn-outline-info btn-lg btn-block">
+              <Link to={`/edit-book/${book._id}`} className="btn btn-outline-info btn-lg btn-block">
                     Edit Book
               </Link>
               <br />
